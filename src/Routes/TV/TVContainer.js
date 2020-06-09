@@ -4,7 +4,7 @@ import { tvApi } from "api";
 
 export default class extends React.Component {
   state = {
-    toRated: null,
+    topRated: null,
     popular: null,
     airingToday: null,
     loading: true,
@@ -33,10 +33,11 @@ export default class extends React.Component {
   }
 
   render() {
-    const { toRated, popular, airingToday, loading, error } = this.state;
+    const { topRated, popular, airingToday, loading, error } = this.state;
+    console.log(this.state);
     return (
       <TVPresenter
-        toRated={toRated}
+        topRated={topRated}
         popular={popular}
         airingToday={airingToday}
         loading={loading}

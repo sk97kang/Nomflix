@@ -2,6 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
+  timeout: 1000,
 });
 
 api.interceptors.request.use((config) => {
@@ -40,7 +41,7 @@ export const tvApi = {
       },
     }),
   search: (term) =>
-    api.get("search/movie", {
+    api.get("search/tv", {
       params: {
         query: encodeURIComponent(term),
       },
