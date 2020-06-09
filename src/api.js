@@ -19,13 +19,13 @@ export const moviesApi = {
   movieDetail: (id) =>
     api.get(`movie/${id}`, {
       params: {
-        apeend_to_response: "videos",
+        append_to_response: "videos",
       },
     }),
   search: (term) =>
     api.get("search/movie", {
       params: {
-        query: encodeURIComponent(term),
+        query: term,
       },
     }),
 };
@@ -37,13 +37,13 @@ export const tvApi = {
   showDetail: (id) =>
     api.get(`tv/${id}`, {
       params: {
-        apeend_to_response: "videos",
+        append_to_response: "videos",
       },
     }),
   search: (term) =>
     api.get("search/tv", {
       params: {
-        query: encodeURIComponent(term),
+        query: term,
       },
     }),
 };

@@ -20,6 +20,9 @@ const Input = styled.input`
   all: unset;
   font-size: 28px;
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 5px 10px;
+  border-radius: 5px;
 `;
 
 const SearchPresenter = ({

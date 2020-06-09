@@ -20,6 +20,13 @@ Leanrning React and ES6 by building a Movie Discovery App.
 - [x] Movie Detail
 - [x] Search (Movie, TV)
 
+## Code Challenges
+
+- [ ] IMDB Link
+- [ ] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
+- [ ] /collections Route
+- [ ] On TV Show, show seasons and creators
+
 # 스터디 정리
 
 ## Use Library

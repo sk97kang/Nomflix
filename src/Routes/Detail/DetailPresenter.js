@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Helmet from "react-helmet";
+import ReactPlayer from "react-player";
 import Loader from "../../Components/Loader";
 
 const Container = styled.div`
@@ -9,6 +10,9 @@ const Container = styled.div`
   width: 100%;
   position: relative;
   padding: 50px;
+  @media screen and (max-width: 880px) {
+    padding: 20px;
+  }
 `;
 
 const Backdrop = styled.div`
@@ -34,17 +38,23 @@ const Content = styled.div`
 `;
 
 const Cover = styled.div`
-  width: 30%;
+  width: 300px;
+  height: 450px;
   background-image: url(${(props) => props.bgImage});
   background-position: center center;
   background-size: cover;
-  height: 100%;
   border-radius: 5px;
+  @media screen and (max-width: 880px) {
+    display: none;
+  }
 `;
 
 const Data = styled.div`
-  width: 70%;
+  width: 60%;
   margin-left: 10px;
+  @media screen and (max-width: 880px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`
@@ -66,7 +76,23 @@ const Overview = styled.div`
   font-size: 12px;
   opacity: 0.7;
   line-height: 1.5;
-  width: 60%;
+  width: 100%;
+`;
+
+const VideoContainer = styled.div`
+  width: 100%;
+  padding: 10px 0px;
+  overflow-x: auto;
+  overflow-y: hidden;
+`;
+
+const Video = styled(ReactPlayer)`
+  margin-top: 10px;
+`;
+
+const VideoTitle = styled.div`
+  font-size: 24px;
+  margin-top: 20px;
 `;
 
 const DetailPresenter = ({ result, loading, error }) =>
@@ -99,7 +125,9 @@ const DetailPresenter = ({ result, loading, error }) =>
             <Item>
               {result.release_date
                 ? result.release_date.substring(0, 4)
-                : result.first_air_date.substring(0, 4)}
+                : result.first_air_date
+                ? result.first_air_date.substring(0, 4)
+                : "?"}
             </Item>
             <Divider>●</Divider>
             <Item>
@@ -121,6 +149,19 @@ const DetailPresenter = ({ result, loading, error }) =>
             </Item>
           </ItemContainer>
           <Overview>{result.overview}</Overview>
+          <VideoContainer>
+            <VideoTitle>
+              {result.videos.results.length > 0 &&
+                result.videos.results[0].name}
+            </VideoTitle>
+            {result.videos.results.length > 0 && (
+              <Video
+                url={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`}
+                width="340px"
+                height="200px"
+              />
+            )}
+          </VideoContainer>
         </Data>
       </Content>
     </Container>
